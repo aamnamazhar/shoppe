@@ -10,39 +10,99 @@ class WishlistScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-         backgroundColor: Colors.white,
+        backgroundColor: Colors.white,
         elevation: 0,
         scrolledUnderElevation: 0,
-        title: const Text('Wishlist'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.arrow_forward),
-            onPressed: () {},
-          ),
-        ],
+        iconTheme: const IconThemeData(color: Colors.black87),
+        automaticallyImplyLeading: false,
+        toolbarHeight: 10,
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Recently Viewed
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Wishlist',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      'Recently viewed',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  width: 36,
+                  height: 36,
+                  decoration: const BoxDecoration(
+                    color: Colors.blue,
+                    shape: BoxShape.circle,
+                  ),
+                  child: IconButton(
+                    icon: const Icon(Icons.arrow_forward, color: Colors.white, size: 18),
+                    onPressed: () {},
+                    padding: EdgeInsets.zero,
+                  ),
+                )
+              ],
+            ),
+          ),
+
           SizedBox(
-            height: 80,
+            height: 70,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.only(left: 16),
               itemCount: 6,
               itemBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CircleAvatar(
-                  radius: 30,
-                  backgroundImage: AssetImage('assets/user${index + 1}.jpg'),
+                padding: const EdgeInsets.symmetric(horizontal: 6),
+                child: Container(
+                  width: 52,
+                  height: 52,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.white, width: 2),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 4,
+                        offset: Offset(0, 2),
+                      ),
+                    ],
+                    image: DecorationImage(
+                      image: AssetImage('assets/user${index + 1}.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
               ),
             ),
           ),
 
+
+          const SizedBox(height: 10),
+
           // Wishlist Items
           Expanded(
             child: ListView(
-              children: [
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              children: const [
                 WishlistItem(
                   image: 'assets/1.jpg',
                   title: 'Lorem ipsum dolor sit amet consectetur.',
@@ -77,8 +137,7 @@ class WishlistScreen extends StatelessWidget {
           ),
         ],
       ),
-     bottomNavigationBar: const CustomBottomNavBar(currentIndex: 1),
+      bottomNavigationBar: const CustomBottomNavBar(currentIndex: 1),
     );
   }
 }
-
