@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import '../screens/home_screen.dart';
 import '../screens/wishlist_screen.dart';
-import '../screens/orders_screen.dart';
+import '../screens/items_screen.dart';
 import '../screens/cart_screen.dart';
 import '../screens/profile_screen.dart';
 
@@ -22,7 +22,7 @@ class CustomBottomNavBar extends StatelessWidget {
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const WishlistScreen()));
         break;
       case 2:
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const OrdersScreen()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const ItemsScreen()));
         break;
       case 3:
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const CartScreen()));
